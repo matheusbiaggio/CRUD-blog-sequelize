@@ -2,7 +2,7 @@ const { User } = require('../models');
 const { generateToken } = require('../utils/token');
 
 const authenticate = async (email, password) => {
-  const error = new Error('invalid fields');
+  const error = new Error('Invalid fields');
   error.status = 400;
 
   const user = await User.findOne({
