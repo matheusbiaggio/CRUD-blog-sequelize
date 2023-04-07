@@ -10,4 +10,6 @@ validateNewCategory.validateName,
 categoryController.addCategory,
 );
 
+categoryRouter.get('/', validateToken, categoryController.getAll);
+
 module.exports = categoryRouter;
