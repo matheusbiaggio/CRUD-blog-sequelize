@@ -13,6 +13,12 @@ const addUser = async (req, res) => {
   }
 };
 
+const getAll = async (_req, res) => {
+  const allUser = await userService.getAll();
+  return res.status(200).json(allUser);
+};
+
 module.exports = {
   addUser,
+  getAll,
 };

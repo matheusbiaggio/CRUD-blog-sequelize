@@ -1,10 +1,10 @@
 const { User } = require('../models');
 
-const addUser = async (newUser) => {
+const addUser = async (user) => {
   const error = new Error('User already registered');
   error.status = 409;
 
-  const { email } = newUser;
+  const { email } = user;
 
   const verifyEmail = await User.findOne({
     where: { email },
@@ -12,15 +12,20 @@ const addUser = async (newUser) => {
 
   if (verifyEmail) throw error;
 
-  const newUser2 = await User.create(newUser);
+  const newUser = await User.create(user);
 
-  console.log(newUser2);
+  return newUser;
+};
 
-  // await User.create(newUser);
+const getAll = async () => {
+  const getAllUsers = await User.findAll({
+    attributes: { exclude: ['password'] },
+  });
 
-  return newUser2;
+  return getAllUsers;
 };
 
 module.exports = {
   addUser,
+  getAll,
 };
