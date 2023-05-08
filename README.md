@@ -28,7 +28,7 @@ To start the project, it is necessary to install npm in the directory and start 
 install the dependencies:
 
 ```bash
-npm install
-
 docker-compose up -d
+
+npm install
 ```
